@@ -1,26 +1,456 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.resume {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  background: white;
+  font-family: Arial, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Section titles */
+.pers_info,
+.summary,
+.education,
+.skills,
+.projects {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  margin-top: 20px;
+  padding-bottom: 4px;
+  text-align: left;
+  background-color: #e6e6e6;
+  padding-left: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Personal info text */
+.res_name,
+.res_profession,
+.res_email,
+.res_add,
+.res_phn {
+  display: block;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 4px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.th, .tdata {
+  border: 1px solid black;
+  padding: 6px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.th, .tdata {
+  border: 1px solid black;
+  padding: 6px;
+  text-align: center;
+}
+
+.summ_text {
+  width: 95%;
+  margin: 10px auto;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: justify;
+  padding: 10px;
+  background-color: #f7f9fc;
+  border-left: 4px solid #898c8e;
+  border-radius: 6px;
+}
+
+.summ_text {
+  width: 95%;
+  margin: 10px auto;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: justify;
+  padding: 10px;
+  background-color: #f7f9fc;
+  border-left: 4px solid #898c8e;
+  border-radius: 6px;
+}
+
+.header{
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
+  /* border-radius: 50%; */
+  /* margin-left:50px; */
+  align-items: center;
+}
+.images{
+  border-radius: 50%;
+}
+.print,.edit{
+  display: flex;
+  text-align: center;
+  margin:5px;
+  padding: 5px;
+  margin:auto;
+  border-color: white;
+  background-color: blue;
+}
+.print:hover{
+  background-color: rgb(4, 4, 121);
+  color:grey;
+  /* box-shadow: 15px; */
+  border-color:grey
+
+}
+
+ul {
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+.SKILLS{
+  margin-left:-20px
+}
+.PROJECTS{
+  margin-left:32px;
+}
+
+
+/* .name , .profession {
+  border:1px solid black;
+  border-radius:10%;
+  background-color: grey;
+  margin:5px;
+  padding:5px;
+  display: inline-block;
+} */
+
+
+.form {
+  width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #f4f6f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.form textarea {
+  height: 80px;
+  resize: none;
+}
+
+.form button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #0059c1;
+}
+
+@media print {
+  .button_s {
+    display: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+
+/* ATS */
+
+.ats_container {
   font-family: Arial, Helvetica, sans-serif;
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+  color: #000;
+  line-height: 1.6;
+}
+
+/* Name */
+.ats_name {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Contact */
+.ats_email,
+.ats_add {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+/* Section headings */
+.ats_summ_h,
+.ats_skills_h,
+.ats_edu_h,
+.ats_proj_h {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid black;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+}
+
+/* Summary */
+.ats_summ {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Skills */
+.ats_skills {
+  margin-left: 18px;
+  font-size: 14px;
+}
+
+/* Education */
+.ats_edu {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+/* Projects */
+.ats_proj {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+
+/* classic */
+
+.cls_container {
+  font-family: "Times New Roman", serif;
+  width: 800px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  color: black;
+  line-height: 1.6;
+}
+
+/* Name Section */
+.cls_name {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cls_prof {
+  font-size: 18px;
+  margin: 2px 0;
+}
+
+.css_email {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.cls_add {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Section Headings */
+.cls_summ_h,
+.cls_edu_h,
+.cls_skills_h,
+.cls_proj_h {
+  font-size: 20px;
+  margin-top: 20px;
+  border-bottom: 2px solid black;
+  padding-bottom: 3px;
+}
+
+/* Summary */
+.cls_summ {
+  margin-top: 8px;
+  font-size: 15px;
+  text-align: justify;
+}
+
+/* Table */
+.cls_table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.cls_header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cls_data {
+  text-align: center;
+}
+
+/* Skills */
+.cls_skills {
+  margin-top: 8px;
+  margin-left: 20px;
+}
+
+.cls_skills_item {
+  margin-bottom: 3px;
+}
+
+/* Projects */
+.cls_projs {
+  margin-top: 8px;
+  margin-left: 20px;
+}
+
+.cls_proj {
+  font-weight: bold;
+}
+
+.cls_proj_dsc {
+  margin: 2px 0 8px 0;
+  font-size: 14px;
+}
+
+/* Modern */
+
+.mod_container {
+  display: flex;
+  width: 900px;
+  margin: auto;
+  background: #ffffff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* LEFT SIDEBAR */
+.mod_Lsidebar {
+  width: 35%;
+  background: #1e293b;
+  color: white;
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.mod_name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mod_profession {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #cbd5f5;
+}
+
+.mod_hr {
+  border: 0;
+  border-top: 1px solid #475569;
+  margin: 15px 0;
+}
+
+.mod_contacts,
+.mod_skills_h {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.mod_email,
+.mod_phone,
+.mod_add {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.mod_skills {
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.mod_skills li {
+  margin-bottom: 5px;
+}
+
+/* RIGHT CONTENT */
+.mod_Rsidebar {
+  width: 65%;
+  padding: 40px;
+}
+
+.mod_summ_h,
+.mod_edu_h,
+.mod_proj_h {
+  font-size: 22px;
+  border-bottom: 2px solid #1e293b;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 3px;
+}
+
+.mod_summ {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.mod_edu {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.mod_projs {
+  margin-bottom: 15px;
+}
+
+.mod_proj {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mod_proj_des {
+  font-size: 14px;
+}
+
+.home {
+  text-decoration: none;
 }
