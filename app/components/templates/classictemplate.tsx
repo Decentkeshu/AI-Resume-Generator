@@ -22,7 +22,7 @@ export default function ClassicTemplate({ data }:props) {
 
       {/* Education */}
       <h2 className="cls_edu_h">Education</h2>
-      <table border="1" cellPadding="5" width="100%" className="cls_table">
+      <table border={1} cellPadding="5" width="100%" className="cls_table">
         <thead className="cls_thead">
           <tr className="cls_trow">
             <th className="cls_header">Class</th>
