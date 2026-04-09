@@ -92,7 +92,7 @@ export default   function Defaulttemplate({data}:props,){
      <ul> 
         <div className="SKILLS"> 
      {Array.isArray(data.languages) && 
-     data.languages.map((language,index)=>(
+     data.languages.map((language:string,index:number)=>(
         <li key={index}>{language}</li>
      ))}
      </div>
@@ -101,7 +101,7 @@ export default   function Defaulttemplate({data}:props,){
 <ul>
     <div className="SKILLS"> 
   {Array.isArray(data.skills) &&
-    data.skills.map((skill, index) => (
+    data.skills.map((skill:string, index:number) => (
       <li key={index}>{skill}</li>  
     ))}
     </div>
@@ -109,7 +109,7 @@ export default   function Defaulttemplate({data}:props,){
     <h2 className="projects">PROJECTS</h2>
 <ul className="PROJECTS">
   {Array.isArray(data.projects) &&
-    data.projects.map((project, index) => (
+    data.projects.map((project:string, index:number) => (
       <li key={index}>
         <strong>{project}</strong>
         {data.projectDescriptions?.[index] && (

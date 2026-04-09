@@ -25,7 +25,7 @@ export default function ModernTemplate({ data }: Props) {
         <h3 className="mod_skills_h">Languages</h3>
         <ul className="mod_skills"> 
         {Array.isArray(data.languages) && 
-        data.languages.map((language,index)=>(
+        data.languages.map((language:string,index:number)=>(
           <li key={index}>{language}</li>
         ))}
         </ul>

@@ -8,10 +8,10 @@ import ModernTemplate from "../components/templates/moderntemplate";
 
 export default function Resultpage(){
     const router = useRouter()
-    const [data,setdata] = useState(null);
-   const resumeref = useRef(null);
+    const [data, setdata] = useState<any>(null);
+   const resumeref = useRef<HTMLDivElement>(null);
    useEffect(()=>{
-        const stored_data = JSON.parse(localStorage.getItem("userData"));
+        const stored_data = JSON.parse(localStorage.getItem("userData") || "null");
         setdata(stored_data);
     },[])
     if(!data) return <h2>Loading...</h2>

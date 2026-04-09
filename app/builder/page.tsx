@@ -64,7 +64,7 @@ export default  function Builder(){
   }
 }, []);
 
-    const generateprojectdiscription = async (index) =>{
+    const generateprojectdiscription = async (index:number) =>{
             const projectName = projects[index];
             if (!projectName.trim()) return alert("Enter a project name first!");
 

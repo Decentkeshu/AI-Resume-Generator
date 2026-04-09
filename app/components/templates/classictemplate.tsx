@@ -54,7 +54,7 @@ export default function ClassicTemplate({ data }:props) {
       </table>
       <h2 className="cls_skills_h">Languages</h2>
       {Array.isArray(data.languages) && 
-      data.languages.map((language,index)=>(
+      data.languages.map((language: string, index: number) => (
         <li key={index} className="cls_skills_item">{language}</li>
       ))
       }
@@ -62,7 +62,7 @@ export default function ClassicTemplate({ data }:props) {
       {/* Skills */}
       <h2 className="cls_skills_h">Skills</h2>
       <ul className="cls_skills">
-        {data.skills?.map((skill, index) => (
+        {data.skills?.map((skill:string, index:number) => (
           <li key={index} className="cls_skills_item">{skill}</li>
         ))}
       </ul>
@@ -70,7 +70,7 @@ export default function ClassicTemplate({ data }:props) {
       {/* Projects */}
       <h2 className="cls_proj_h">Projects</h2>
       <ul className="cls_projs">
-        {data.projects?.map((project, index) => (
+        {data.projects?.map((project:string, index:number) => (
           <li key={index}>
             <strong className="cls_proj">{project}</strong>
             <p className="cls_proj_dsc">{data.projectDescriptions?.[index]}</p>

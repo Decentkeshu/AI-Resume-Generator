@@ -19,7 +19,7 @@ export default function ATSTemplate({ data }: Props) {
       
       <h2 className="ats_skills_h">Languages</h2>
       {Array.isArray(data.languages) && 
-      data.languages.map((language,index)=>(
+      data.languages.map((language: string, index: number) => (
         <li key={index}>{language}</li>
       ))}
 
