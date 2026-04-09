@@ -124,6 +124,8 @@ export default  function Builder(){
         const profession = document.querySelector('[name="user_profession"]').value;
         const skilltext = skills.join(", ");
         const projecttext = projects.join(", ");
+
+
         const res = await fetch("/api/summary",{
             method:"POST",
             headers : {
