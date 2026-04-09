@@ -15,14 +15,17 @@ export default   function Defaulttemplate({data}:props,){
     if (!data) return <h2>Loading...</h2>;
     const downloadpdf = async()=>{
         const html2pdf = (await import ("html2pdf.js")).default;
-        const options = {
-            margin:10,
-            filename:`${data.name}_Resume.pdf`,
-            image:{type:"jpeg",quality:0.98},
-            html2canvas : {scale:2},
-            jsPDF : {unit : "mm",format : "a4",orientation : "portrait"},
-        };
-        html2pdf().set(options).from(resumeref.current).save();
+       const options = {
+    margin: 10,
+    filename: `${data.Name}_Resume.pdf`,
+    image: { type: "jpeg" as const, quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm" as const, format: "a4", orientation: "portrait" as const },
+};
+if (resumeref.current) {
+    html2pdf().set(options).from(resumeref.current).save();
+}
+
     }
     // const stored_data = await searchstored_data;
     return<div> 
