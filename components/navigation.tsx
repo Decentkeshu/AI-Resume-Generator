@@ -229,7 +229,7 @@ export const Navigation = () => {
             <Show when="signed-in">
               <Link href="/" className="nav-home-link">Home</Link>
               <div className="divider" />
-              <UserButton afterSignOutUrl="/" />
+              <UserButton  />
             </Show>
 
           </div>
