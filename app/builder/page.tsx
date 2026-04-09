@@ -12,7 +12,7 @@ export default  function Builder(){
     const[summary,setsummary] = useState("");
     const[loading,setloading] = useState(false);
     const[projectdispcription,setprojectdiscription] = useState([""]);
-    const[loadingproject,setloadingproject] = useState([]);
+    const[loadingproject,setloadingproject] = useState<boolean[]>([];
     const[imageData,setImageData] = useState(null);
     const[template,settemplate] = useState("default");
     const[languages,setlanguages] = useState([""]);
