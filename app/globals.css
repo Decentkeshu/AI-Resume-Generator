@@ -96,14 +96,16 @@
 .images{
   border-radius: 50%;
 }
-.print,.edit{
-  display: flex;
-  text-align: center;
-  margin:5px;
-  padding: 5px;
-  margin:auto;
-  border-color: white;
+.print, .edit {
+  padding: 10px 16px;
+  border: none;
   background-color: blue;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+
+  width: auto;        
+  flex: none;          
 }
 .print:hover{
   background-color: rgb(4, 4, 121);
@@ -193,9 +195,25 @@ li {
     display: none;
   }
 }
-.button_s{
-  display: flex;
+.button_s {
+  position: fixed;        
+  bottom: 0;
+  left: 0;
+  width: 100%;
   
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  
+  background: white;
+  padding: 5px;
+  border-top: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.print {
+  padding: 10px 16px;
+  cursor: pointer;
 }
 
 /* ATS */
