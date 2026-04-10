@@ -4,10 +4,21 @@ export async function POST(req) {
 
     // Create prompt for AI
     const prompt = `
-     write a job description explanation in 4-5 line for the company ${body.experience} and for the role ${body.role}:
-      company : ${body.experience}
-      role : ${body.role}
-    `;
+Write a professional resume job description.
+
+Company: ${body.experience}
+Role: ${body.role}
+
+Instructions:
+- Write exactly 4-5 lines
+- Each line should be concise and impactful
+- Start each line with a strong action verb (e.g., Managed, Developed, Led, Implemented)
+- Focus on responsibilities, achievements, and impact
+- Keep it ATS-friendly and professional
+- Do NOT include any introduction, explanation, or extra text
+
+Output only the description.
+`;
 
     // Send request to Groq API
     const response = await fetch(

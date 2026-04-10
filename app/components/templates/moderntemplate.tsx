@@ -4,9 +4,30 @@ type Props = {
   data: any;
 };
 
+import { useRouter } from "next/navigation";
+import { useState,useEffect ,useRef} from "react";
+import { json } from "stream/consumers";
+
 export default function ModernTemplate({ data }: Props) {
+  const router = useRouter()
+  const resumeref = useRef(null);
+
+   const downloadpdf = async()=>{
+        const html2pdf = (await import ("html2pdf.js")).default;
+       const options = {
+    margin: 10,
+    filename: `${data.Name}_Resume.pdf`,
+    image: { type: "jpeg" as const, quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm" as const, format: "a4", orientation: "portrait" as const },
+};
+if (resumeref.current) {
+    html2pdf().set(options).from(resumeref.current).save();
+}
+
+    }
   return (
-    <div className="mod_container">
+    <div className="mod_container" ref={resumeref}>
       
       {/* LEFT SIDEBAR */}
       <div className="mod_Lsidebar"
@@ -61,6 +82,18 @@ export default function ModernTemplate({ data }: Props) {
        <h3 className="mod_summ">{data.experiencedescription}</h3>
         
       </div>
+
+             <div className="button_s">
+    <button onClick={downloadpdf} className="print">
+        Download as Pdf
+    </button>
+
+
+<button onClick={() => window.print()} className="print">
+  Print Resume
+</button>
+ <button type="button" onClick={()=>router.push("/builder?edit=true")} className="print">Edit Resume</button>
+    </div>
     </div>
   );
 }

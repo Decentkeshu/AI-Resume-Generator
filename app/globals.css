@@ -193,7 +193,10 @@ li {
     display: none;
   }
 }
-
+.button_s{
+  display: flex;
+  
+}
 
 /* ATS */
 

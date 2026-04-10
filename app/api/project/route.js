@@ -3,11 +3,22 @@ export async function POST(req) {
     const body = await req.json();
 
     // Create prompt for AI
-    const prompt = `
-      Write a professional resume project descriptin for the project ${body.projects} using the skill ${body.skills} without writing the welcoming message for:
-      Skills: ${body.skills}
-      Projects: ${body.projects}
-    `;
+   const prompt = `
+Write a concise and professional resume project description.
+
+Project: ${body.projects}
+Skills/Technologies Used: ${body.skills}
+
+Instructions:
+- Limit the description to 4-5 lines only
+- Use strong action verbs (e.g., Developed, Built, Implemented)
+- Focus on impact, features, and technologies used
+- Do NOT include any introduction, explanation, or greeting
+- Write in bullet points or short paragraph suitable for a resume
+- Keep it ATS-friendly and professional tone
+
+Output only the description.
+`;
 
     // Send request to Groq API
     const response = await fetch(

@@ -3,13 +3,25 @@ export async function POST(req) {
     const body = await req.json();
 
     // Create prompt for AI
-    const prompt = `
-      Write a professional resume summary straight to the point without writing the welcoming message for:
-      Name: ${body.name}
-      Profession: ${body.profession}
-      Skills: ${body.skills}
-      Projects: ${body.projects}
-    `;
+ const prompt = `
+Write a professional resume summary.
+
+Details:
+Name: ${body.name}
+Profession: ${body.profession}
+Skills: ${body.skills}
+Projects: ${body.projects}
+
+Instructions:
+- Write exactly 3-4 lines only
+- Keep it concise, impactful, and ATS-friendly
+- Highlight key skills, experience, and project strengths
+- Use strong professional language
+- Do NOT include greetings, introductions, or the name
+- Do NOT add extra explanation or formatting
+
+Output only the summary.
+`;
 
     // Send request to Groq API
     const response = await fetch(

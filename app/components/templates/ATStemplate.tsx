@@ -3,10 +3,30 @@
 type Props = {
   data: any;
 };
+import { useRouter } from "next/navigation";
+import { useState,useEffect ,useRef} from "react";
+import { json } from "stream/consumers";
 
 export default function ATSTemplate({ data }: Props) {
+
+const router = useRouter()
+const resumeref = useRef(null);
+     const downloadpdf = async()=>{
+        const html2pdf = (await import ("html2pdf.js")).default;
+       const options = {
+    margin: 10,
+    filename: `${data.Name}_Resume.pdf`,
+    image: { type: "jpeg" as const, quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm" as const, format: "a4", orientation: "portrait" as const },
+};
+if (resumeref.current) {
+    html2pdf().set(options).from(resumeref.current).save();
+}
+
+    }
   return (
-    <div className="ats_container">
+    <div className="ats_container" ref={resumeref}>
       
       {/* Name */}
       <h1 className="ats_name">{data.Name}</h1>
@@ -49,6 +69,19 @@ export default function ATSTemplate({ data }: Props) {
       <h3>{data.role}  - {data.experience}</h3>
       <h3 className="ats_summ">{data.experiencedescription}</h3>
 
+      <div className="button_s">
+    <button onClick={downloadpdf} className="print">
+        Download as Pdf
+    </button>
+
+
+<button onClick={() => window.print()} className="print">
+  Print Resume
+</button>
+ <button type="button" onClick={()=>router.push("/builder?edit=true")} className="print">Edit Resume</button>
     </div>
+    </div>
+
+    // </div>
   );
 }

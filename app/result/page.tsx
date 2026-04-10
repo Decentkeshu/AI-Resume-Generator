@@ -43,6 +43,6 @@ export default function Resultpage(){
 
   
    </div>
-   <button type="button" onClick={()=>router.push("/builder?edit=true")} className="edit">Edit Resume</button>
+  
     </>
 }

@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from "next/navigation";
 type props = {
     data : any;
 }
@@ -7,6 +8,7 @@ import { useState,useEffect ,useRef} from "react";
 import { json } from "stream/consumers";
 export default   function Defaulttemplate({data}:props,){
     // const [data,setdata] = useState(null);
+     const router = useRouter()
     const resumeref = useRef(null);
     // useEffect(()=>{
     //     const stored_data = JSON.parse(localStorage.getItem("userData"));
@@ -129,11 +131,12 @@ if (resumeref.current) {
     <button onClick={downloadpdf} className="print">
         Download as Pdf
     </button>
-</div>
+
 
 <button onClick={() => window.print()} className="print">
   Print Resume
 </button>
-
+ <button type="button" onClick={()=>router.push("/builder?edit=true")} className="print">Edit Resume</button>
+    </div>
     </div>
 }
