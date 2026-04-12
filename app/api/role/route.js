@@ -3,21 +3,21 @@ export async function POST(req) {
     const body = await req.json();
 
     // Create prompt for AI
-    const prompt = `
+  const prompt = `
 Write a professional resume job description.
 
 Company: ${body.experience}
 Role: ${body.role}
 
 Instructions:
-- Write exactly 4-5 lines
-- Each line should be concise and impactful
-- Start each line with a strong action verb (e.g., Managed, Developed, Led, Implemented)
+- First line must be the heading in this exact format: **Company Name** | Role Title
+- Then write exactly 4-5 bullet points describing the role
+- Start each bullet with a strong action verb (e.g., Managed, Developed, Led, Implemented)
 - Focus on responsibilities, achievements, and impact
 - Keep it ATS-friendly and professional
 - Do NOT include any introduction, explanation, or extra text
 
-Output only the description.
+Output only the description, starting with the heading.
 `;
 
     // Send request to Groq API
