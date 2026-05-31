@@ -4,11 +4,10 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
-
+       @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
         .hero-page {
           min-height: calc(100vh - 64px);
-          background: #0a0a0f;
+          background: #0c0c0c;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -27,28 +26,19 @@ export default function Home() {
           transform: translateX(-50%);
           width: 600px;
           height: 600px;
-          background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+         background: radial-gradient(circle, rgba(22,101,52,0.15) 0%, transparent 70%);
           pointer-events: none;
         }
 
-        .hero-page::after {
-          content: '';
-          position: absolute;
-          bottom: -100px;
-          right: -100px;
-          width: 400px;
-          height: 400px;
-          background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%);
-          pointer-events: none;
-        }
+       
 
         .hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          background: rgba(99,102,241,0.1);
-          border: 1px solid rgba(99,102,241,0.25);
-          color: #a5b4fc;
+          background: rgba(22,101,52,0.15);
+          border: 1px solid rgba(22,101,52,0.3);
+          color: #4ade80;
           font-size: 0.75rem;
           font-weight: 500;
           padding: 6px 14px;
@@ -62,7 +52,7 @@ export default function Home() {
           width: 6px;
           height: 6px;
           border-radius: 50%;
-          background: #6366f1;
+          background: #16a34a;
           animation: pulse 2s infinite;
         }
 
@@ -72,10 +62,10 @@ export default function Home() {
         }
 
         .hero-title {
-          font-family: 'Cormorant Garamond', serif;
+         font-family: 'Sora', sans-serif;
+          color: #f1f5f9;
           font-size: clamp(3rem, 8vw, 5.5rem);
           font-weight: 700;
-          color: #f8fafc;
           text-align: center;
           line-height: 1.05;
           letter-spacing: -0.02em;
@@ -83,15 +73,12 @@ export default function Home() {
         }
 
         .hero-title-accent {
-          background: linear-gradient(135deg, #818cf8, #c084fc);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
+          color: #16a34a;
+           }
 
         .hero-subtitle {
           font-size: clamp(1rem, 2.5vw, 1.2rem);
-          color: #64748b;
+          color: #4b4b4b;
           text-align: center;
           max-width: 520px;
           line-height: 1.7;
@@ -103,7 +90,7 @@ export default function Home() {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background: linear-gradient(135deg, #6366f1, #a855f7);
+          background: #15803d;
           color: #fff;
           font-family: 'DM Sans', sans-serif;
           font-size: 1rem;
@@ -112,7 +99,7 @@ export default function Home() {
           border-radius: 12px;
           text-decoration: none;
           transition: all 0.25s ease;
-          box-shadow: 0 0 30px rgba(99,102,241,0.3);
+          box-shadow: none;
           position: relative;
           z-index: 1;
         }
@@ -121,6 +108,7 @@ export default function Home() {
           transform: translateY(-2px);
           box-shadow: 0 8px 40px rgba(99,102,241,0.45);
           color: #fff;
+          background: #166534;
         }
 
         .hero-cta-arrow {
@@ -138,6 +126,7 @@ export default function Home() {
           margin-top: 4rem;
           flex-wrap: wrap;
           justify-content: center;
+          color: #3a3a3a;
         }
 
         .hero-feature {
@@ -153,12 +142,13 @@ export default function Home() {
           width: 18px;
           height: 18px;
           border-radius: 50%;
-          background: rgba(99,102,241,0.15);
+          background: rgba(22,101,52,0.15);
+          color: #16a34a;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 10px;
-          color: #818cf8;
+          
           flex-shrink: 0;
         }
 
@@ -174,8 +164,8 @@ export default function Home() {
         }
 
         .hero-card {
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(255,255,255,0.07);
+         background: #161616;
+          border: 0.5px solid #222;
           border-radius: 16px;
           padding: 1.5rem;
           width: 200px;
@@ -183,8 +173,8 @@ export default function Home() {
         }
 
         .hero-card:hover {
-          background: rgba(255,255,255,0.05);
-          border-color: rgba(99,102,241,0.3);
+          // background: rgba(255,255,255,0.05);
+          border-color: #15803d;
           transform: translateY(-3px);
         }
 
@@ -196,43 +186,43 @@ export default function Home() {
         .hero-card-title {
           font-size: 0.875rem;
           font-weight: 500;
-          color: #e2e8f0;
+          color: #e5e5e5;
           margin-bottom: 4px;
         }
 
         .hero-card-desc {
           font-size: 0.75rem;
-          color: #475569;
+          color: #444;
           line-height: 1.5;
         }
       `}</style>
 
       <main className="hero-page">
-        {/* Badge */}
+     
         <div className="hero-badge">
           <div className="hero-badge-dot" />
           AI Powered
         </div>
 
-        {/* Headline */}
+       
         <h1 className="hero-title">
           Build your perfect<br />
           <span className="hero-title-accent">Resume</span>
         </h1>
 
-        {/* Subtitle */}
+     
         <p className="hero-subtitle">
           Create a job-winning resume in minutes with the power of AI.
           Tailored, professional, and ready to impress.
         </p>
 
-        {/* CTA */}
+       
         <Link href="/builder" className="hero-cta">
           Create My Resume
           <span className="hero-cta-arrow">→</span>
         </Link>
 
-        {/* Trust features */}
+      
         <div className="hero-features">
           {["AI-generated content", "ATS-friendly formats", "Download as PDF"].map(f => (
             <div className="hero-feature" key={f}>
@@ -242,7 +232,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Feature cards */}
+      
         <div className="hero-cards">
           {[
             { icon: "⚡", title: "Fast & Easy", desc: "Generate a full resume in under 2 minutes" },

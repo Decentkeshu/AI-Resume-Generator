@@ -1,10 +1,10 @@
-import { Suspense } from "react";
+import ProtectedRoute from "../components/protectedroute";
 import Builder from "./Builder";
 
-export default function Page() {
+export default function BuilderPage() {
     return (
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <ProtectedRoute>
             <Builder />
-        </Suspense>
+        </ProtectedRoute>
     );
 }

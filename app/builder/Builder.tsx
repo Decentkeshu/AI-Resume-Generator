@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Defaulttemplate from "../components/templates/defaulttemplate";
 import { useSearchParams } from "next/navigation";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Builder() {
     const searchParams = useSearchParams();
@@ -33,37 +34,62 @@ export default function Builder() {
     const [totalbtech, settotalbtech] = useState<number | string>("");
     const [getbtech, setgetbtech] = useState<number | string>("");
 
-    useEffect(() => {
-        if (!isEdit) return;
+   useEffect(() => {
+    if (!isEdit) return;
+
+    const resumeId = localStorage.getItem("resumeId");
+
+    if (!resumeId) {
+        // fallback to localStorage if no id found
         const storedData = localStorage.getItem("userData");
         if (storedData) {
             const parsed = JSON.parse(storedData);
-
-            setname(parsed.Name || "");
-            setprofession(parsed.Profession || "");
-            setemail(parsed.Email || "");
-            setphoneNo(parsed.Phone || "");
-            setaddress(parsed.Add || "");
-
-            settotal10(parsed.Total_10 || "");
-            setget10(parsed.Get_10 || "");
-            settotal12(parsed.Total_12 || "");
-            setget12(parsed.Get_12 || "");
-            settotalbtech(parsed.Total_btech || "");
-            setgetbtech(parsed.Get_btech || "");
-
-            setskills(parsed.skills || [""]);
-            setprojects(parsed.projects || [""]);
-            setlanguages(parsed.languages || [""]);
-            setsummary(parsed.summary || "");
-            setexperience(parsed.experience || "");
-            setrole(parsed.role || "");
-            setexperiencedescription(parsed.experiencedescription || "");
-            setprojectdiscription(parsed.projectDescriptions || [""]);
-            setImageData(parsed.imageData || null);
-            settemplate(parsed.template || "default");
+            populateForm(parsed);
         }
-    }, []);
+        return;
+    }
+
+    // Fetch from DB
+    const fetchResume = async () => {
+        try {
+            const res = await fetch(`${BASE_URL}/api/resume/${resumeId}`);
+            const data = await res.json();
+
+            if (!data.success) throw new Error(data.message);
+
+            populateForm(data.resume);
+        } catch (err) {
+            console.error("Failed to fetch resume:", err);
+            alert("Could not load resume data.");
+        }
+    };
+
+    fetchResume();
+}, []);
+
+const populateForm = (parsed: any) => {
+    setname(parsed.Name || "");
+    setprofession(parsed.Profession || "");
+    setemail(parsed.Email || "");
+    setphoneNo(parsed.Phone || "");
+    setaddress(parsed.Add || "");
+    settotal10(parsed.Total_10 || "");
+    setget10(parsed.Get_10 || "");
+    settotal12(parsed.Total_12 || "");
+    setget12(parsed.Get_12 || "");
+    settotalbtech(parsed.Total_btech || "");
+    setgetbtech(parsed.Get_btech || "");
+    setskills(parsed.skills || [""]);
+    setprojects(parsed.projects || [""]);
+    setlanguages(parsed.languages || [""]);
+    setsummary(parsed.summary || "");
+    setexperience(parsed.experience || "");
+    setrole(parsed.role || "");
+    setexperiencedescription(parsed.experiencedescription || "");
+    setprojectdiscription(parsed.projectDescriptions || [""]);
+    setImageData(parsed.imageData || null);
+    settemplate(parsed.template || "default");
+};
 
     const generateprojectdiscription = async (index: number) => {
         const projectName = projects[index];
@@ -203,6 +229,7 @@ export default function Builder() {
 
     const handlesubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+         console.log("BASE_URL:", BASE_URL);
         const Name = name;
         const Profession = profession;
         const Email = email;
@@ -244,10 +271,38 @@ export default function Builder() {
             experience,
             role,
             experiencedescription,
+            userId: localStorage.getItem("userId"),
         };
+           console.log("userData:", userData);
+        try {
+        // 1. Save to MongoDB
+       const resumeId = localStorage.getItem("resumeId");
 
+const res = await fetch(
+    isEdit && resumeId
+        ? `${BASE_URL}/api/resume/update/${resumeId}`  // PUT for edit
+        : `${BASE_URL}/api/resume/save`,               // POST for new
+    {
+        method: isEdit && resumeId ? "PUT" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+    }
+);
+  console.log("Response status:", res.status);
+        console.log("Response ok:", res.ok);
+         const data = await res.json();
+
+        if (!data.success) throw new Error(data.message);
+
+        localStorage.setItem("resumeId", data.id);
         localStorage.setItem("userData", JSON.stringify(userData));
-        router.push("/result");
+             router.push(`/result?id=${data.id}`);
+
+            } catch (err) {
+        console.error("Failed to save resume:", err);
+        alert("Failed to save. Please try again.");
+    }
+
     };
 
     return (
