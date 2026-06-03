@@ -1,5 +1,5 @@
 const User = require('../models/usermodel');
-const Resume = require('../models/resumemodel');
+const Resume = require('../models/resumemodel.js');
 const { check, validationResult } = require('express-validator');
 exports.userlogged = [
     check('user')
