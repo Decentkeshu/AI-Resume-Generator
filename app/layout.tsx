@@ -1,7 +1,7 @@
 import { Navigation } from '@/components/navigation';
 import './globals.css'
 
-import { Counter } from '@/components/counter';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 export default function RootLayout({
   children,
